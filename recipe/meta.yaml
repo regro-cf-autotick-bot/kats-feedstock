@@ -1,5 +1,5 @@
 {% set name = "kats" %}
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 
 package:
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kats-{{ version }}.tar.gz
-  sha256: 3969f92ff31fa1d992fe45df9e31359bec851339db766733ec556d5c704e8f25
+  sha256: bab55112f26d6458dd444696dfe9fd42097effac03813bcef700d87be361149d
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
