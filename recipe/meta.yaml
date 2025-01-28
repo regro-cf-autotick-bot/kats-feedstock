@@ -7,18 +7,18 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kats-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/kats-{{ version }}.tar.gz
   sha256: bab55112f26d6458dd444696dfe9fd42097effac03813bcef700d87be361149d
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.7,<3.9
+    - python {{ python_min }}
   run:
     - attrs >=21.2.0
     - ax-platform ==0.2.4
@@ -37,7 +37,7 @@ requirements:
     - plotly >=2.2.1
     - pymannkendall >=1.4.1
     - pystan ==2.19.1.1
-    - python >=3.7,<3.9
+    - python >={{ python_min }},<3.9
     - python-dateutil >=2.8.0
     - scikit-learn >=0.24.2
     - scipy <1.8.0
@@ -49,6 +49,8 @@ requirements:
     - typing-extensions
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - kats
     - kats.detectors
